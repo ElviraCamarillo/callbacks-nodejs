@@ -10,14 +10,14 @@
  *
  */
 
- const koder ={
-     contactado: false,
-     entrevistado: false,
-     lugarApartado: false,
-     asistenciaPrimerClase: false
- }
+const koder ={
+    contactado: false,
+    entrevistado: false,
+    lugarApartado: false,
+    asistenciaPrimerClase: false
+}
 
-function llamada(koderAContactar,callback){
+function llamarKoder(koderAContactar,callback){
     setTimeout(()=>{
         koderAContactar.contactado = true
         let error = koderAContactar.contactado
@@ -28,7 +28,7 @@ function llamada(koderAContactar,callback){
     )
 }
 
-function entrevista(koderAEntrevistar, callback){
+function entrevistarKoder(koderAEntrevistar, callback){
     setTimeout(()=>{
         koderAEntrevistar.entrevistado = true
         let error = koderAEntrevistar.entrevistado 
@@ -38,7 +38,7 @@ function entrevista(koderAEntrevistar, callback){
     },2000)
 }
 
-function inscripcion(koderAInscribir, callback){
+function inscribirKoder(koderAInscribir, callback){
     setTimeout(()=>{
         koderAInscribir.lugarApartado = true
         let error = koderAInscribir.lugarApartado 
@@ -48,7 +48,7 @@ function inscripcion(koderAInscribir, callback){
     },2000)
 }
 
-function primerClase(claseATomar, callback){
+function tomarPrimerClase(claseATomar, callback){
     setTimeout(()=>{
         claseATomar.asistenciaPrimerClase = true
         let error = claseATomar.asistenciaPrimerClase 
@@ -59,22 +59,22 @@ function primerClase(claseATomar, callback){
 
 }
 
-llamada(koder,(errorDeContacto,koderContactado) =>{
+llamarKoder(koder,(errorDeContacto,koderContactado) =>{
     if(errorDeContacto){
         console.error('Error de contacto: ',errorDeContacto)
         return
     }
-    entrevista(koderContactado,(errorDeEntrevista,koderEntrevistado)=>{
+    entrevistarKoder(koderContactado,(errorDeEntrevista,koderEntrevistado)=>{
         if(errorDeEntrevista){
             console.error('Error de entrevista: ',errorDeEntrevista)
             return
         }
-        inscripcion (koderEntrevistado,(errorDeInscripcion,koderInscrito)=>{
+        inscribirKoder (koderEntrevistado,(errorDeInscripcion,koderInscrito)=>{
             if(errorDeInscripcion){
                 console.error('Error de inscripción: ',errorDeInscripcion)
                 return
             }
-            primerClase(koderInscrito,(errorDeClase,claseTomada)=>{
+            tomarPrimerClase(koderInscrito,(errorDeClase,claseTomada)=>{
                 if(errorDeClase){
                     console.error('Error de clase: ',errorDeClase)
                     return
